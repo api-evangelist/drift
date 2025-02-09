@@ -5,7 +5,7 @@ apis:
   - aid: drift:drift
     name: Drift
     tags:
-      - API
+      - Sales
     humanURL: https://devdocs.drift.com
     properties:
       - url: https://devdocs.drift.com
