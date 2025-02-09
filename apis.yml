@@ -13,10 +13,9 @@ apis:
       - url: properties/drift-openapi.yml
         type: OpenAPI
     description: >-
-      Drift is a cloud-based solution designed to help businesses automate sales
-      processes by adding live chat windows to websites for increased customer
-      experience and loyalty. Key features include chatbots, geo-targeting,
-      offline access, proactive chating and transfers/routing.
+      You can build custom integrations with other platforms or bots for your
+      own Drift instance. The best place to start is with our Quick Start to
+      Drift Apps ...
 name: Drift
 tags:
   - Sales
@@ -35,3 +34,16 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
+common:
+  - name: Using Drift APIs
+    description: 'null'
+    url: https://devdocs.drift.com/docs/using-drift-apis
+    type: Documentation
+  - name: Using Drift APIs
+    description: 'null'
+    url: https://devdocs.drift.com/docs/using-drift-apis
+    type: Guide
+  - name: FAQs
+    description: 'null'
+    url: https://devdocs.drift.com/docs/faqs
+    type: FAQ
