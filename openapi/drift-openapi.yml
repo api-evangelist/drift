@@ -1,0 +1,845 @@
+openapi: 3.0.0
+info:
+  title: Drift Developer API
+  description: >-
+    ## =K Introduction
+
+
+    Welcome to the Drift Developer API Postman collection. This collection
+    serves as a source for Drift Users to easily fork the public Drift API for
+    testing, familiarization and developing.
+
+
+    If you're new to Postman, we suggest referencing [Postman's basic
+    documentation](https://learning.postman.com/docs/getting-started/basics/navigating-postman/)
+    to familiarize yourself with the tool.
+
+
+    ## =€ Getting started with this collection
+
+
+    In order to modify the collection with variables specific to your instance
+    of Drift, first
+    [fork](https://learning.postman.com/docs/collaborating-in-postman/using-version-control/forking-elements/)
+    the collection. In your forked copy, follow the instructions below to begin
+    sending and receiving data from the Drift API.
+
+
+    Unless you are building a Partner app (to be used by many Drift customers)
+    only a simple bearer token API Key is required. First [create an API Key
+    application](https://devdocs.drift.com/docs/quick-start) under your
+    [https://dev.drift.com](https://dev.drift.com) portal. Copy and paste the
+    API Key into the collection variable called `auth_token`. All requests are
+    set to inherit authentication from parent, and the parent folder is set for
+    Bearer Token.
+
+
+    ### Baseline URL
+
+
+    The final variable to configure in the Drift Developer API collection is the
+    `base_url`. This should be set to `https://driftapi.com`.
+
+
+    ### Sending Requests
+
+
+    Requests are arranged by the Drift object they modify: Contacts,
+    Conversations, etc. The description of each sub-collection contains a link
+    to the Drift API documentation specific to that endpoint. Ensure necessary
+    body or URL parameters are provided and your auth token is configured
+    correctly before sending requests.
+  version: 1.0.0
+servers:
+  - url: http://{{base_url}}
+  - url: https://driftapi.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags:
+  - name: Contacts
+    description: >-
+      [https://devdocs.drift.com/docs/contact-model](https://devdocs.drift.com/docs/contact-model)
+  - name: Users
+    description: >-
+      [https://devdocs.drift.com/docs/user-model](https://devdocs.drift.com/docs/user-model)
+  - name: Conversations and Messages
+    description: >-
+      [https://devdocs.drift.com/docs/conversation-model](https://devdocs.drift.com/docs/conversation-model)
+  - name: Accounts
+  - name: Playbooks
+    description: >-
+      [https://devdocs.drift.com/docs/playbook-model-1](https://devdocs.drift.com/docs/playbook-model-1)
+  - name: Teams
+    description: >-
+      [https://devdocs.drift.com/docs/team-model](https://devdocs.drift.com/docs/team-model)
+  - name: App Admin
+    description: >-
+      [https://devdocs.drift.com/docs/app-uninstall](https://devdocs.drift.com/docs/app-uninstall)
+  - name: Data Privacy
+    description: >-
+      [https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion](https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion)
+  - name: SCIM API
+paths:
+  /contacts:
+    post:
+      tags:
+        - Contacts
+      summary: Create a contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                attributes:
+                  email: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Contacts
+      summary: List contacts by externalId
+      parameters:
+        - name: idType
+          in: query
+          schema:
+            type: string
+          example: external
+        - name: id
+          in: query
+          schema:
+            type: string
+          description: Your unique externalId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/{id}:
+    patch:
+      tags:
+        - Contacts
+      summary: Update a contact - Drift Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                attributes:
+                  attribute_name: value
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Drift contactId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Contacts
+      summary: Fetch a contact by Drift Id
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Drift contactId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Contacts
+      summary: Delete a contact
+      requestBody:
+        content: {}
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/normalize:
+    patch:
+      tags:
+        - Contacts
+      summary: Update a contact - ExternalId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                attributes:
+                  attribute_name: value
+      parameters:
+        - name: idType
+          in: query
+          schema:
+            type: string
+          description: One of drift, external, internal
+        - name: id
+          in: query
+          schema:
+            type: string
+          description: Your unique externalId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/:
+    get:
+      tags:
+        - Contacts
+      summary: List contacts by email
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+          description: The email address of the requested contact
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /emails/unsubscribe:
+    post:
+      tags:
+        - Contacts
+      summary: Unsubscribe contacts from emails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - email@mail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/timeline:
+    post:
+      tags:
+        - Contacts
+      summary: Post a timeline event to a contact - externalId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                externalId: 0
+                createdAt: 0
+                event: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/attributes:
+    get:
+      tags:
+        - Contacts
+      summary: List custom contact attributes
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Fetch a user
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/list:
+    get:
+      tags:
+        - Users
+      summary: List all users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/update:
+    patch:
+      tags:
+        - Users
+      summary: Update a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {}
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/meetings/org:
+    get:
+      tags:
+        - Users
+      summary: Fetch booked meetings
+      parameters:
+        - name: min_start_time
+          in: query
+          schema:
+            type: string
+        - name: max_start_time
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/{id}/messages:
+    post:
+      tags:
+        - Conversations and Messages
+      summary: Create a message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                type: string
+                body: string
+                buttons:
+                  - value: string
+                    label: string
+                    type: string
+                userId: 0
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The Drift conversationId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Conversations and Messages
+      summary: Fetch a conversation's messages
+      parameters:
+        - name: next
+          in: query
+          schema:
+            type: string
+          description: Page number where page sizes are always 50
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The Drift conversationId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/{id}:
+    get:
+      tags:
+        - Conversations and Messages
+      summary: Fetch a conversation
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The Drift conversationId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/{id}/transcript:
+    get:
+      tags:
+        - Conversations and Messages
+      summary: Fetch a conversation's transcript as a string
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The Drift conversationId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/{id}/json_transcript:
+    get:
+      tags:
+        - Conversations and Messages
+      summary: Fetch a conversation's transcript as a JSON object
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The Drift conversationId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /attachments/{id}/data:
+    get:
+      tags:
+        - Conversations and Messages
+      summary: Fetch a conversation's attachments
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The Drift documentId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/new:
+    post:
+      tags:
+        - Conversations and Messages
+      summary: Create a conversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: string
+                message:
+                  body: string
+                  attributes: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/stats:
+    get:
+      tags:
+        - Conversations and Messages
+      summary: List conversation statuses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /conversations/list:
+    get:
+      tags:
+        - Conversations and Messages
+      summary: List conversations
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: string
+          description: Max number of conversations to retrieve (max 100, default 25).
+        - name: statusId
+          in: query
+          schema:
+            type: string
+          description: >-
+            Return only conversations that match the provided status code. Uses
+            the following values: OPEN, CLOSED, PENDING
+        - name: page_token
+          in: query
+          schema:
+            type: string
+          description: Allows you to move to the next page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts/create:
+    post:
+      tags:
+        - Accounts
+      summary: Create an account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                owner_id: 0
+                name: string
+                domain: string
+                customProperties:
+                  - label: string
+                    name: string
+                    value: 0
+                    type: NUMBER
+                targeted: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts/{id}:
+    get:
+      tags:
+        - Accounts
+      summary: Fetch an account
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Drift accountId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Accounts
+      summary: Delete an account
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Drift accountId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts:
+    get:
+      tags:
+        - Accounts
+      summary: List accounts
+      parameters:
+        - name: index
+          in: query
+          schema:
+            type: string
+          description: >-
+            Used as a starting index of the the accounts query in the
+            authenticated Drift user's account
+        - name: size
+          in: query
+          schema:
+            type: string
+          description: Number of accounts per batch (default=10, max=65)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts/update:
+    patch:
+      tags:
+        - Accounts
+      summary: Update an account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                ownerId: 0
+                name: string
+                accountId: string
+                domain: string
+                customProperties:
+                  - label: string
+                    name: string
+                    value: 0
+                    type: NUMBER
+                targeted: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /playbooks/list:
+    get:
+      tags:
+        - Playbooks
+      summary: List playbooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /playbooks/clp:
+    get:
+      tags:
+        - Playbooks
+      summary: List conversational landing pages (CLP)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /teams/org:
+    get:
+      tags:
+        - Teams
+      summary: List teams
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /teams/users/{id}:
+    get:
+      tags:
+        - Teams
+      summary: List teams by user
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Drift userId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /app/uninstall:
+    post:
+      tags:
+        - App Admin
+      summary: Trigger app uninstall
+      requestBody:
+        content: {}
+      parameters:
+        - name: clientId
+          in: query
+          schema:
+            type: string
+          example: ':clientId'
+        - name: clientSecret
+          in: query
+          schema:
+            type: string
+          example: ':clientSecret'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /app/token_info:
+    post:
+      tags:
+        - App Admin
+      summary: Get token information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                access_token: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /gdpr/retrieve:
+    post:
+      tags:
+        - Data Privacy
+      summary: Fetch GDPR data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /gdpr/delete:
+    post:
+      tags:
+        - Data Privacy
+      summary: Delete GDPR data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /scim/Users:
+    get:
+      tags:
+        - SCIM API
+      summary: List user objects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - SCIM API
+      summary: Provision a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schemas:
+                  - urn:scim:schemas:core:2.0
+                userName: stgring
+                displayName: string
+                roles:
+                  - value: string
+                    display: string
+                    primary: true
+                name:
+                  givenName: string
+                  familyName: string
+                  formatted: string
+                phoneNumbers:
+                  - value: string
+                    display: string
+                    primary: true
+                locale: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - SCIM API
+      summary: Update a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schemas:
+                  - urn:scim:schemas:core:2.0
+                userName: stgring
+                displayName: string
+                roles:
+                  - value: string
+                    display: string
+                    primary: true
+                name:
+                  givenName: string
+                  familyName: string
+                  formatted: string
+                phoneNumbers:
+                  - value: string
+                    display: string
+                    primary: true
+                locale: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - SCIM API
+      summary: Deprovision a user
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /scim/Users/{id}:
+    get:
+      tags:
+        - SCIM API
+      summary: Fetch a user object
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Drift userId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
