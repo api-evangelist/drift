@@ -2,9 +2,10 @@ openapi: 3.0.0
 info:
   title: Drift
   description: >-
-    You can build custom integrations with other platforms or bots for your own
-    Drift instance. The best place to start is with our Quick Start to Drift
-    Apps ...
+    Drift is a cloud-based solution designed to help businesses automate sales
+    processes by adding live chat windows to websites for increased customer
+    experience and loyalty. Key features include chatbots, geo-targeting,
+    offline access, proactive chating and transfers/routing.
   version: 1.0.0
 servers:
   - url: http://{{base_url}}
