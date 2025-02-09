@@ -6,10 +6,12 @@ apis:
     name: Drift
     tags:
       - API
-    humanURL: https://dev.drift.com/
+    humanURL: https://devdocs.drift.com
     properties:
-      - url: https://dev.drift.com/
+      - url: https://devdocs.drift.com
         type: Documentation
+      - type: OpenAPI
+        url: properties/drift-openapi.yml
     description: >-
       You can build custom integrations with other platforms or bots for your
       own Drift instance. The best place to start is with our Quick Start to
