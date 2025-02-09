@@ -1,54 +1,10 @@
 openapi: 3.0.0
 info:
-  title: Drift Developer API
+  title: Drift
   description: >-
-    ## =K Introduction
-
-
-    Welcome to the Drift Developer API Postman collection. This collection
-    serves as a source for Drift Users to easily fork the public Drift API for
-    testing, familiarization and developing.
-
-
-    If you're new to Postman, we suggest referencing [Postman's basic
-    documentation](https://learning.postman.com/docs/getting-started/basics/navigating-postman/)
-    to familiarize yourself with the tool.
-
-
-    ## =€ Getting started with this collection
-
-
-    In order to modify the collection with variables specific to your instance
-    of Drift, first
-    [fork](https://learning.postman.com/docs/collaborating-in-postman/using-version-control/forking-elements/)
-    the collection. In your forked copy, follow the instructions below to begin
-    sending and receiving data from the Drift API.
-
-
-    Unless you are building a Partner app (to be used by many Drift customers)
-    only a simple bearer token API Key is required. First [create an API Key
-    application](https://devdocs.drift.com/docs/quick-start) under your
-    [https://dev.drift.com](https://dev.drift.com) portal. Copy and paste the
-    API Key into the collection variable called `auth_token`. All requests are
-    set to inherit authentication from parent, and the parent folder is set for
-    Bearer Token.
-
-
-    ### Baseline URL
-
-
-    The final variable to configure in the Drift Developer API collection is the
-    `base_url`. This should be set to `https://driftapi.com`.
-
-
-    ### Sending Requests
-
-
-    Requests are arranged by the Drift object they modify: Contacts,
-    Conversations, etc. The description of each sub-collection contains a link
-    to the Drift API documentation specific to that endpoint. Ensure necessary
-    body or URL parameters are provided and your auth token is configured
-    correctly before sending requests.
+    You can build custom integrations with other platforms or bots for your own
+    Drift instance. The best place to start is with our Quick Start to Drift
+    Apps ...
   version: 1.0.0
 servers:
   - url: http://{{base_url}}
