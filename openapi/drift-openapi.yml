@@ -46,7 +46,7 @@ paths:
     post:
       tags:
         - Contacts
-      summary: Create a contact
+      summary: Drift Create a contact
       requestBody:
         content:
           application/json:
@@ -63,7 +63,7 @@ paths:
     get:
       tags:
         - Contacts
-      summary: List contacts by externalId
+      summary: Drift List contacts by externalId
       parameters:
         - name: idType
           in: query
@@ -124,7 +124,7 @@ paths:
     post:
       tags:
         - Contacts
-      summary: Delete a contact
+      summary: Drift Delete a contact
       requestBody:
         content: {}
       parameters:
@@ -142,7 +142,7 @@ paths:
     patch:
       tags:
         - Contacts
-      summary: Update a contact - ExternalId
+      summary: Drift Update a contact - ExternalId
       requestBody:
         content:
           application/json:
@@ -171,7 +171,7 @@ paths:
     get:
       tags:
         - Contacts
-      summary: List contacts by email
+      summary: Drift List contacts by email
       parameters:
         - name: email
           in: query
@@ -187,7 +187,7 @@ paths:
     post:
       tags:
         - Contacts
-      summary: Unsubscribe contacts from emails
+      summary: Drift Unsubscribe contacts from emails
       requestBody:
         content:
           application/json:
@@ -204,7 +204,7 @@ paths:
     post:
       tags:
         - Contacts
-      summary: Post a timeline event to a contact - externalId
+      summary: Drift Post a timeline event to a contact - externalId
       requestBody:
         content:
           application/json:
@@ -223,7 +223,7 @@ paths:
     get:
       tags:
         - Contacts
-      summary: List custom contact attributes
+      summary: Drift List custom contact attributes
       responses:
         '200':
           description: Successful response
@@ -233,7 +233,7 @@ paths:
     get:
       tags:
         - Users
-      summary: Fetch a user
+      summary: Drift Fetch a user
       parameters:
         - name: id
           in: path
@@ -249,7 +249,7 @@ paths:
     get:
       tags:
         - Users
-      summary: List all users
+      summary: Drift List all users
       responses:
         '200':
           description: Successful response
@@ -259,7 +259,7 @@ paths:
     patch:
       tags:
         - Users
-      summary: Update a user
+      summary: Drift Update a user
       requestBody:
         content:
           application/json:
@@ -280,7 +280,7 @@ paths:
     get:
       tags:
         - Users
-      summary: Fetch booked meetings
+      summary: Drift Fetch booked meetings
       parameters:
         - name: min_start_time
           in: query
@@ -299,7 +299,7 @@ paths:
     post:
       tags:
         - Conversations and Messages
-      summary: Create a message
+      summary: Drift Create a message
       requestBody:
         content:
           application/json:
@@ -328,7 +328,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: Fetch a conversation's messages
+      summary: Drift Fetch a conversation's messages
       parameters:
         - name: next
           in: query
@@ -350,7 +350,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: Fetch a conversation
+      summary: Drift Fetch a conversation
       parameters:
         - name: id
           in: path
@@ -367,7 +367,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: Fetch a conversation's transcript as a string
+      summary: Drift Fetch a conversation's transcript as a string
       parameters:
         - name: id
           in: path
@@ -384,7 +384,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: Fetch a conversation's transcript as a JSON object
+      summary: Drift Fetch a conversation's transcript as a JSON object
       parameters:
         - name: id
           in: path
@@ -401,7 +401,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: Fetch a conversation's attachments
+      summary: Drift Fetch a conversation's attachments
       parameters:
         - name: id
           in: path
@@ -418,7 +418,7 @@ paths:
     post:
       tags:
         - Conversations and Messages
-      summary: Create a conversation
+      summary: Drift Create a conversation
       requestBody:
         content:
           application/json:
@@ -438,7 +438,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: List conversation statuses
+      summary: Drift List conversation statuses
       responses:
         '200':
           description: Successful response
@@ -448,7 +448,7 @@ paths:
     get:
       tags:
         - Conversations and Messages
-      summary: List conversations
+      summary: Drift List conversations
       parameters:
         - name: limit
           in: query
@@ -476,7 +476,7 @@ paths:
     post:
       tags:
         - Accounts
-      summary: Create an account
+      summary: Drift Create an account
       requestBody:
         content:
           application/json:
@@ -501,7 +501,7 @@ paths:
     get:
       tags:
         - Accounts
-      summary: Fetch an account
+      summary: Drift Fetch an account
       parameters:
         - name: id
           in: path
@@ -517,7 +517,7 @@ paths:
     delete:
       tags:
         - Accounts
-      summary: Delete an account
+      summary: Drift Delete an account
       parameters:
         - name: id
           in: path
@@ -534,7 +534,7 @@ paths:
     get:
       tags:
         - Accounts
-      summary: List accounts
+      summary: Drift List accounts
       parameters:
         - name: index
           in: query
@@ -557,7 +557,7 @@ paths:
     patch:
       tags:
         - Accounts
-      summary: Update an account
+      summary: Drift Update an account
       requestBody:
         content:
           application/json:
@@ -583,7 +583,7 @@ paths:
     get:
       tags:
         - Playbooks
-      summary: List playbooks
+      summary: Drift List playbooks
       responses:
         '200':
           description: Successful response
@@ -593,7 +593,7 @@ paths:
     get:
       tags:
         - Playbooks
-      summary: List conversational landing pages (CLP)
+      summary: Drift List conversational landing pages (CLP)
       responses:
         '200':
           description: Successful response
@@ -603,7 +603,7 @@ paths:
     get:
       tags:
         - Teams
-      summary: List teams
+      summary: Drift List teams
       responses:
         '200':
           description: Successful response
@@ -613,7 +613,7 @@ paths:
     get:
       tags:
         - Teams
-      summary: List teams by user
+      summary: Drift List teams by user
       parameters:
         - name: id
           in: path
@@ -630,7 +630,7 @@ paths:
     post:
       tags:
         - App Admin
-      summary: Trigger app uninstall
+      summary: Drift Trigger app uninstall
       requestBody:
         content: {}
       parameters:
@@ -653,7 +653,7 @@ paths:
     post:
       tags:
         - App Admin
-      summary: Get token information
+      summary: Drift Get token information
       requestBody:
         content:
           application/json:
@@ -670,7 +670,7 @@ paths:
     post:
       tags:
         - Data Privacy
-      summary: Fetch GDPR data
+      summary: Drift Fetch GDPR data
       requestBody:
         content:
           application/json:
@@ -687,7 +687,7 @@ paths:
     post:
       tags:
         - Data Privacy
-      summary: Delete GDPR data
+      summary: Drift Delete GDPR data
       requestBody:
         content:
           application/json:
@@ -704,7 +704,7 @@ paths:
     get:
       tags:
         - SCIM API
-      summary: List user objects
+      summary: Drift List user objects
       responses:
         '200':
           description: Successful response
@@ -713,7 +713,7 @@ paths:
     post:
       tags:
         - SCIM API
-      summary: Provision a user
+      summary: Drift Provision a user
       requestBody:
         content:
           application/json:
@@ -745,7 +745,7 @@ paths:
     put:
       tags:
         - SCIM API
-      summary: Update a user
+      summary: Drift Update a user
       requestBody:
         content:
           application/json:
@@ -777,7 +777,7 @@ paths:
     delete:
       tags:
         - SCIM API
-      summary: Deprovision a user
+      summary: Drift Deprovision a user
       responses:
         '200':
           description: Successful response
@@ -787,7 +787,7 @@ paths:
     get:
       tags:
         - SCIM API
-      summary: Fetch a user object
+      summary: Drift Fetch a user object
       parameters:
         - name: id
           in: path
