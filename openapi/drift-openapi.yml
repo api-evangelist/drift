@@ -18,29 +18,29 @@ components:
 security:
   - bearerAuth: []
 tags:
-  - name: Contacts
-    description: >-
-      [https://devdocs.drift.com/docs/contact-model](https://devdocs.drift.com/docs/contact-model)
-  - name: Users
-    description: >-
-      [https://devdocs.drift.com/docs/user-model](https://devdocs.drift.com/docs/user-model)
-  - name: Conversations and Messages
-    description: >-
-      [https://devdocs.drift.com/docs/conversation-model](https://devdocs.drift.com/docs/conversation-model)
   - name: Accounts
-  - name: Playbooks
-    description: >-
-      [https://devdocs.drift.com/docs/playbook-model-1](https://devdocs.drift.com/docs/playbook-model-1)
-  - name: Teams
-    description: >-
-      [https://devdocs.drift.com/docs/team-model](https://devdocs.drift.com/docs/team-model)
   - name: App Admin
     description: >-
       [https://devdocs.drift.com/docs/app-uninstall](https://devdocs.drift.com/docs/app-uninstall)
+  - name: Contacts
+    description: >-
+      [https://devdocs.drift.com/docs/contact-model](https://devdocs.drift.com/docs/contact-model)
+  - name: Conversations and Messages
+    description: >-
+      [https://devdocs.drift.com/docs/conversation-model](https://devdocs.drift.com/docs/conversation-model)
   - name: Data Privacy
     description: >-
       [https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion](https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion)
+  - name: Playbooks
+    description: >-
+      [https://devdocs.drift.com/docs/playbook-model-1](https://devdocs.drift.com/docs/playbook-model-1)
   - name: SCIM API
+  - name: Teams
+    description: >-
+      [https://devdocs.drift.com/docs/team-model](https://devdocs.drift.com/docs/team-model)
+  - name: Users
+    description: >-
+      [https://devdocs.drift.com/docs/user-model](https://devdocs.drift.com/docs/user-model)
 paths:
   /contacts:
     post:
