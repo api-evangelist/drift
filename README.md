@@ -1,49 +1,62 @@
 # Drift (drift)
-Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+
+Drift is a cloud-based conversational marketing and sales platform that adds live chat, chatbots, and AI-driven engagement to websites for lead capture, routing, and conversion. Drift was acquired by Salesloft in 2024.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Contract
+- **Position:** Consuming
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Sales
+- Sales
+- Marketing
+- Conversational AI
+- Chatbots
+- Live Chat
 
 ## Timestamps
 
-- **Created:** 2025-02-09 
-- **Modified:** 2025-02-09 
+- **Created:** 2025-02-09
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Drift
-You can build custom integrations with other platforms or bots for your own Drift instance. The best place to start is with our Quick Start to Drift Apps ...
+
+The Drift API allows developers to build custom integrations with the Drift platform, including managing contacts, conversations, messages, accounts, users, playbooks, teams, and webhooks for chat-driven sales and marketing automation.
 
 **Human URL:** [https://devdocs.drift.com](https://devdocs.drift.com)
 
+**Base URL:** https://driftapi.com
 
-#### Tags:
+#### Tags
 
- - Sales
+- Sales
+- Marketing
+- Conversational AI
+- Chatbots
 
 #### Properties
 
 - [Documentation](https://devdocs.drift.com)
-- [OpenAPI](properties/drift-openapi.yml)
+- [OpenAPI](openapi/drift-openapi.yml)
+- [Quick Start](https://devdocs.drift.com/docs/quick-start-to-drift-apps)
+- [Authentication](https://devdocs.drift.com/docs/authentication)
+- [Webhooks](https://devdocs.drift.com/docs/webhooks)
 
 ## Common Properties
 
 - [Documentation](https://devdocs.drift.com/docs/using-drift-apis)
 - [Guide](https://devdocs.drift.com/docs/using-drift-apis)
 - [FAQ](https://devdocs.drift.com/docs/faqs)
+- [Website](https://www.drift.com)
 
 ## Maintainers
 
 **FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
