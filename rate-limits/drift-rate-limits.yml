@@ -1,0 +1,29 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Drift
+providerId: drift
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Conversational AI
+description: Drift API rate limits per app.
+sources:
+  - https://www.drift.com/pricing/
+  - https://devdocs.drift.com/docs/rate-limits
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: REST API (default)
+    scope: app
+    metric: requests_per_minute
+    limit: 600
+    timeFrame: minute
+  - name: Webhook processing
+    scope: endpoint
+    metric: concurrent
+    limit: high

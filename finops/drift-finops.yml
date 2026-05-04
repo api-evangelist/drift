@@ -1,0 +1,57 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Drift
+providerId: drift
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Conversational AI
+description: FOCUS-aligned FinOps for Drift.
+sources:
+  - https://www.drift.com/pricing/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Drift
+serviceCategory: Conversational AI
+billingModel:
+  pricingCategory: Annual Contract (Tiered)
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Drift
+  ServiceCategory: Conversational AI
+  ProviderName: Drift
+  PublisherName: Drift
+  BillingCurrency: USD
+meters:
+  - name: user_seats
+    unit: seat-month
+    aggregation: max
+    dimensions:
+      - plan
+  - name: conversations
+    unit: conversation
+    aggregation: sum
+  - name: ai_messages
+    unit: message
+    aggregation: sum
+  - name: playbook_executions
+    unit: execution
+    aggregation: sum
+principles:
+  - name: Visibility
+    description: Track Drift consumption monthly.
+  - name: Allocation
+    description: Tag usage to teams/cost centers.
+  - name: Optimization
+    description: Right-size; reclaim unused entitlements.
+  - name: Accountability
+    description: Set spend alerts; quarterly review.

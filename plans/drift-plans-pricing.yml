@@ -1,0 +1,103 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Drift
+providerId: drift
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Conversational Marketing
+  - Conversational AI
+  - Live Chat
+description: 'Drift annual contract pricing: Premium / Advanced / Enterprise.'
+sources:
+  - https://www.drift.com/pricing/
+plans:
+  - id: drift-premium
+    name: Premium
+    type: enterprise
+    description: From $2,500/month ($30K/year) annual.
+    entries:
+      - label: Monthly equivalent
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '2500.00'
+        userMultiplied: false
+      - label: Annual contract
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '30000.00'
+        userMultiplied: false
+    elements:
+      - name: Live chat + chatbots
+      - name: Drift AI conversation
+      - name: Standard integrations
+      - name: Limited seats
+  - id: drift-advanced
+    name: Advanced
+    type: enterprise
+    description: $4,500-$6,000/month annual.
+    entries:
+      - label: Monthly equivalent
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 4500.00-6000.00
+        userMultiplied: false
+    elements:
+      - name: Conversational landing pages
+      - name: Targeted account routing
+      - name: Advanced reporting
+      - name: More seats
+  - id: drift-enterprise
+    name: Enterprise
+    type: enterprise
+    description: $8,000-$15,000+/month.
+    entries:
+      - label: Monthly equivalent
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 8000.00-15000.00+
+        userMultiplied: false
+    elements:
+      - name: Custom integrations
+      - name: SSO/SCIM
+      - name: Dedicated CSM
+      - name: Advanced security
+  - id: drift-additional-seats
+    name: Additional Seats
+    type: metered
+    description: $50-$100/seat/month for additional sales/support agents.
+    entries:
+      - label: Per additional seat
+        name: extra_seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 50.00-100.00
+        userMultiplied: true
+    elements:
+      - name: Sales / support agent licenses

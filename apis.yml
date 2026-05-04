@@ -1,9 +1,8 @@
 aid: drift
 name: Drift
-description: >-
-  Drift is a cloud-based conversational marketing and sales platform that adds
-  live chat, chatbots, and AI-driven engagement to websites for lead capture,
-  routing, and conversion. Drift was acquired by Salesloft in 2024.
+description: Drift is a cloud-based conversational marketing and sales platform that adds live chat, chatbots,
+  and AI-driven engagement to websites for lead capture, routing, and conversion. Drift was acquired by
+  Salesloft in 2024.
 type: Contract
 position: Consuming
 access: 3rd-Party
@@ -14,19 +13,16 @@ tags:
   - Conversational AI
   - Chatbots
   - Live Chat
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis.yml
 created: '2025-02-09'
-modified: '2026-04-28'
+modified: '2026-05-04'
 specificationVersion: '0.19'
 apis:
   - aid: drift:drift
     name: Drift
-    description: >-
-      The Drift API allows developers to build custom integrations with the
-      Drift platform, including managing contacts, conversations, messages,
-      accounts, users, playbooks, teams, and webhooks for chat-driven sales
-      and marketing automation.
+    description: The Drift API allows developers to build custom integrations with the Drift platform,
+      including managing contacts, conversations, messages, accounts, users, playbooks, teams, and webhooks
+      for chat-driven sales and marketing automation.
     humanURL: https://devdocs.drift.com
     baseURL: https://driftapi.com
     tags:
@@ -57,6 +53,27 @@ common:
     type: FAQ
   - type: Website
     url: https://www.drift.com
+  - type: Features
+    data:
+      - Premium from $2,500/mo ($30K/year)
+      - Advanced $4,500-$6,000/month
+      - Enterprise $8,000-$15,000+/month
+      - 'Additional seats: $50-$100/agent/month'
+      - Annual contracts only (no monthly)
+      - Drift AI conversational chatbot
+      - Live chat with intelligent routing
+      - Conversational landing pages (Advanced+)
+      - Account-based engagement and routing
+      - Conversation Cloud (acquired by Salesloft 2024)
+      - Drift Video for personalized video
+      - Drift Email Bot for email response automation
+      - REST API at driftapi.com
+      - Default 600 req/min/app
+      - OAuth 2.0 + access tokens
+      - Webhooks for messages, contacts, conversations
+    sources:
+      - https://www.drift.com/pricing/
+    updated: '2026-05-04'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
