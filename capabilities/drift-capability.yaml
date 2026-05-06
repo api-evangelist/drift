@@ -1,0 +1,1640 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Drift
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows
+    to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access,
+    proactive chating and transfers/routing.
+  tags:
+  - Drift
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: drift
+    baseUri: http://{{base_url}}
+    description: Drift HTTP API.
+    authentication:
+      type: bearer
+      token: '{{DRIFT_TOKEN}}'
+    resources:
+    - name: contacts
+      path: /contacts
+      operations:
+      - name: post-contacts
+        method: POST
+        description: Drift Create a contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-contacts
+        method: GET
+        description: Drift List contacts by externalId
+        inputParameters:
+        - name: idType
+          in: query
+          type: string
+        - name: id
+          in: query
+          type: string
+          description: Your unique externalId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contacts-id
+      path: /contacts/{id}
+      operations:
+      - name: patch-contacts-id
+        method: PATCH
+        description: Update a contact - Drift Id
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Drift contactId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-contacts-id
+        method: GET
+        description: Fetch a contact by Drift Id
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Drift contactId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post-contacts-id
+        method: POST
+        description: Drift Delete a contact
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contacts-normalize
+      path: /contacts/normalize
+      operations:
+      - name: patch-contacts-normalize
+        method: PATCH
+        description: Drift Update a contact - ExternalId
+        inputParameters:
+        - name: idType
+          in: query
+          type: string
+          description: One of drift, external, internal
+        - name: id
+          in: query
+          type: string
+          description: Your unique externalId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contacts
+      path: /contacts/
+      operations:
+      - name: get-contacts
+        method: GET
+        description: Drift List contacts by email
+        inputParameters:
+        - name: email
+          in: query
+          type: string
+          description: The email address of the requested contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: emails-unsubscribe
+      path: /emails/unsubscribe
+      operations:
+      - name: post-emails-unsubscribe
+        method: POST
+        description: Drift Unsubscribe contacts from emails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contacts-timeline
+      path: /contacts/timeline
+      operations:
+      - name: post-contacts-timeline
+        method: POST
+        description: Drift Post a timeline event to a contact - externalId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contacts-attributes
+      path: /contacts/attributes
+      operations:
+      - name: get-contacts-attributes
+        method: GET
+        description: Drift List custom contact attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-id
+      path: /users/{id}
+      operations:
+      - name: get-users-id
+        method: GET
+        description: Drift Fetch a user
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-list
+      path: /users/list
+      operations:
+      - name: get-users-list
+        method: GET
+        description: Drift List all users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-update
+      path: /users/update
+      operations:
+      - name: patch-users-update
+        method: PATCH
+        description: Drift Update a user
+        inputParameters:
+        - name: userId
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-meetings-org
+      path: /users/meetings/org
+      operations:
+      - name: get-users-meetings-org
+        method: GET
+        description: Drift Fetch booked meetings
+        inputParameters:
+        - name: min_start_time
+          in: query
+          type: string
+        - name: max_start_time
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-id-messages
+      path: /conversations/{id}/messages
+      operations:
+      - name: post-conversations-id-messages
+        method: POST
+        description: Drift Create a message
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The Drift conversationId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-conversations-id-messages
+        method: GET
+        description: Drift Fetch a conversation's messages
+        inputParameters:
+        - name: next
+          in: query
+          type: string
+          description: Page number where page sizes are always 50
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The Drift conversationId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-id
+      path: /conversations/{id}
+      operations:
+      - name: get-conversations-id
+        method: GET
+        description: Drift Fetch a conversation
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The Drift conversationId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-id-transcript
+      path: /conversations/{id}/transcript
+      operations:
+      - name: get-conversations-id-transcript
+        method: GET
+        description: Drift Fetch a conversation's transcript as a string
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The Drift conversationId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-id-json-transcript
+      path: /conversations/{id}/json_transcript
+      operations:
+      - name: get-conversations-id-json-transcript
+        method: GET
+        description: Drift Fetch a conversation's transcript as a JSON object
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The Drift conversationId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: attachments-id-data
+      path: /attachments/{id}/data
+      operations:
+      - name: get-attachments-id-data
+        method: GET
+        description: Drift Fetch a conversation's attachments
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The Drift documentId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-new
+      path: /conversations/new
+      operations:
+      - name: post-conversations-new
+        method: POST
+        description: Drift Create a conversation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-stats
+      path: /conversations/stats
+      operations:
+      - name: get-conversations-stats
+        method: GET
+        description: Drift List conversation statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: conversations-list
+      path: /conversations/list
+      operations:
+      - name: get-conversations-list
+        method: GET
+        description: Drift List conversations
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+          description: Max number of conversations to retrieve (max 100, default 25).
+        - name: statusId
+          in: query
+          type: string
+          description: 'Return only conversations that match the provided status code. Uses the following values: OPEN, CLOSED,
+            PENDING'
+        - name: page_token
+          in: query
+          type: string
+          description: Allows you to move to the next page
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-create
+      path: /accounts/create
+      operations:
+      - name: post-accounts-create
+        method: POST
+        description: Drift Create an account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-id
+      path: /accounts/{id}
+      operations:
+      - name: get-accounts-id
+        method: GET
+        description: Drift Fetch an account
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Drift accountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-accounts-id
+        method: DELETE
+        description: Drift Delete an account
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Drift accountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts
+      path: /accounts
+      operations:
+      - name: get-accounts
+        method: GET
+        description: Drift List accounts
+        inputParameters:
+        - name: index
+          in: query
+          type: string
+          description: Used as a starting index of the the accounts query in the authenticated Drift user's account
+        - name: size
+          in: query
+          type: string
+          description: Number of accounts per batch (default=10, max=65)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-update
+      path: /accounts/update
+      operations:
+      - name: patch-accounts-update
+        method: PATCH
+        description: Drift Update an account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: playbooks-list
+      path: /playbooks/list
+      operations:
+      - name: get-playbooks-list
+        method: GET
+        description: Drift List playbooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: playbooks-clp
+      path: /playbooks/clp
+      operations:
+      - name: get-playbooks-clp
+        method: GET
+        description: Drift List conversational landing pages (CLP)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: teams-org
+      path: /teams/org
+      operations:
+      - name: get-teams-org
+        method: GET
+        description: Drift List teams
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: teams-users-id
+      path: /teams/users/{id}
+      operations:
+      - name: get-teams-users-id
+        method: GET
+        description: Drift List teams by user
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Drift userId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: app-uninstall
+      path: /app/uninstall
+      operations:
+      - name: post-app-uninstall
+        method: POST
+        description: Drift Trigger app uninstall
+        inputParameters:
+        - name: clientId
+          in: query
+          type: string
+        - name: clientSecret
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: app-token-info
+      path: /app/token_info
+      operations:
+      - name: post-app-token-info
+        method: POST
+        description: Drift Get token information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: gdpr-retrieve
+      path: /gdpr/retrieve
+      operations:
+      - name: post-gdpr-retrieve
+        method: POST
+        description: Drift Fetch GDPR data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: gdpr-delete
+      path: /gdpr/delete
+      operations:
+      - name: post-gdpr-delete
+        method: POST
+        description: Drift Delete GDPR data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scim-users
+      path: /scim/Users
+      operations:
+      - name: get-scim-users
+        method: GET
+        description: Drift List user objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post-scim-users
+        method: POST
+        description: Drift Provision a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-scim-users
+        method: PUT
+        description: Drift Update a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-scim-users
+        method: DELETE
+        description: Drift Deprovision a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: scim-users-id
+      path: /scim/Users/{id}
+      operations:
+      - name: get-scim-users-id
+        method: GET
+        description: Drift Fetch a user object
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Drift userId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: drift-rest
+    description: REST adapter for Drift.
+    resources:
+    - path: /contacts
+      name: post-contacts
+      operations:
+      - method: POST
+        name: post-contacts
+        description: Drift Create a contact
+        call: drift.post-contacts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts
+      name: get-contacts
+      operations:
+      - method: GET
+        name: get-contacts
+        description: Drift List contacts by externalId
+        call: drift.get-contacts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/{id}
+      name: patch-contacts-id
+      operations:
+      - method: PATCH
+        name: patch-contacts-id
+        description: Update a contact - Drift Id
+        call: drift.patch-contacts-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/{id}
+      name: get-contacts-id
+      operations:
+      - method: GET
+        name: get-contacts-id
+        description: Fetch a contact by Drift Id
+        call: drift.get-contacts-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/{id}
+      name: post-contacts-id
+      operations:
+      - method: POST
+        name: post-contacts-id
+        description: Drift Delete a contact
+        call: drift.post-contacts-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/normalize
+      name: patch-contacts-normalize
+      operations:
+      - method: PATCH
+        name: patch-contacts-normalize
+        description: Drift Update a contact - ExternalId
+        call: drift.patch-contacts-normalize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/
+      name: get-contacts
+      operations:
+      - method: GET
+        name: get-contacts
+        description: Drift List contacts by email
+        call: drift.get-contacts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /emails/unsubscribe
+      name: post-emails-unsubscribe
+      operations:
+      - method: POST
+        name: post-emails-unsubscribe
+        description: Drift Unsubscribe contacts from emails
+        call: drift.post-emails-unsubscribe
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/timeline
+      name: post-contacts-timeline
+      operations:
+      - method: POST
+        name: post-contacts-timeline
+        description: Drift Post a timeline event to a contact - externalId
+        call: drift.post-contacts-timeline
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /contacts/attributes
+      name: get-contacts-attributes
+      operations:
+      - method: GET
+        name: get-contacts-attributes
+        description: Drift List custom contact attributes
+        call: drift.get-contacts-attributes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/{id}
+      name: get-users-id
+      operations:
+      - method: GET
+        name: get-users-id
+        description: Drift Fetch a user
+        call: drift.get-users-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/list
+      name: get-users-list
+      operations:
+      - method: GET
+        name: get-users-list
+        description: Drift List all users
+        call: drift.get-users-list
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/update
+      name: patch-users-update
+      operations:
+      - method: PATCH
+        name: patch-users-update
+        description: Drift Update a user
+        call: drift.patch-users-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /users/meetings/org
+      name: get-users-meetings-org
+      operations:
+      - method: GET
+        name: get-users-meetings-org
+        description: Drift Fetch booked meetings
+        call: drift.get-users-meetings-org
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/{id}/messages
+      name: post-conversations-id-messages
+      operations:
+      - method: POST
+        name: post-conversations-id-messages
+        description: Drift Create a message
+        call: drift.post-conversations-id-messages
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/{id}/messages
+      name: get-conversations-id-messages
+      operations:
+      - method: GET
+        name: get-conversations-id-messages
+        description: Drift Fetch a conversation's messages
+        call: drift.get-conversations-id-messages
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/{id}
+      name: get-conversations-id
+      operations:
+      - method: GET
+        name: get-conversations-id
+        description: Drift Fetch a conversation
+        call: drift.get-conversations-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/{id}/transcript
+      name: get-conversations-id-transcript
+      operations:
+      - method: GET
+        name: get-conversations-id-transcript
+        description: Drift Fetch a conversation's transcript as a string
+        call: drift.get-conversations-id-transcript
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/{id}/json_transcript
+      name: get-conversations-id-json-transcript
+      operations:
+      - method: GET
+        name: get-conversations-id-json-transcript
+        description: Drift Fetch a conversation's transcript as a JSON object
+        call: drift.get-conversations-id-json-transcript
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /attachments/{id}/data
+      name: get-attachments-id-data
+      operations:
+      - method: GET
+        name: get-attachments-id-data
+        description: Drift Fetch a conversation's attachments
+        call: drift.get-attachments-id-data
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/new
+      name: post-conversations-new
+      operations:
+      - method: POST
+        name: post-conversations-new
+        description: Drift Create a conversation
+        call: drift.post-conversations-new
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/stats
+      name: get-conversations-stats
+      operations:
+      - method: GET
+        name: get-conversations-stats
+        description: Drift List conversation statuses
+        call: drift.get-conversations-stats
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /conversations/list
+      name: get-conversations-list
+      operations:
+      - method: GET
+        name: get-conversations-list
+        description: Drift List conversations
+        call: drift.get-conversations-list
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/create
+      name: post-accounts-create
+      operations:
+      - method: POST
+        name: post-accounts-create
+        description: Drift Create an account
+        call: drift.post-accounts-create
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{id}
+      name: get-accounts-id
+      operations:
+      - method: GET
+        name: get-accounts-id
+        description: Drift Fetch an account
+        call: drift.get-accounts-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{id}
+      name: delete-accounts-id
+      operations:
+      - method: DELETE
+        name: delete-accounts-id
+        description: Drift Delete an account
+        call: drift.delete-accounts-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts
+      name: get-accounts
+      operations:
+      - method: GET
+        name: get-accounts
+        description: Drift List accounts
+        call: drift.get-accounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/update
+      name: patch-accounts-update
+      operations:
+      - method: PATCH
+        name: patch-accounts-update
+        description: Drift Update an account
+        call: drift.patch-accounts-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /playbooks/list
+      name: get-playbooks-list
+      operations:
+      - method: GET
+        name: get-playbooks-list
+        description: Drift List playbooks
+        call: drift.get-playbooks-list
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /playbooks/clp
+      name: get-playbooks-clp
+      operations:
+      - method: GET
+        name: get-playbooks-clp
+        description: Drift List conversational landing pages (CLP)
+        call: drift.get-playbooks-clp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /teams/org
+      name: get-teams-org
+      operations:
+      - method: GET
+        name: get-teams-org
+        description: Drift List teams
+        call: drift.get-teams-org
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /teams/users/{id}
+      name: get-teams-users-id
+      operations:
+      - method: GET
+        name: get-teams-users-id
+        description: Drift List teams by user
+        call: drift.get-teams-users-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /app/uninstall
+      name: post-app-uninstall
+      operations:
+      - method: POST
+        name: post-app-uninstall
+        description: Drift Trigger app uninstall
+        call: drift.post-app-uninstall
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /app/token_info
+      name: post-app-token-info
+      operations:
+      - method: POST
+        name: post-app-token-info
+        description: Drift Get token information
+        call: drift.post-app-token-info
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /gdpr/retrieve
+      name: post-gdpr-retrieve
+      operations:
+      - method: POST
+        name: post-gdpr-retrieve
+        description: Drift Fetch GDPR data
+        call: drift.post-gdpr-retrieve
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /gdpr/delete
+      name: post-gdpr-delete
+      operations:
+      - method: POST
+        name: post-gdpr-delete
+        description: Drift Delete GDPR data
+        call: drift.post-gdpr-delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scim/Users
+      name: get-scim-users
+      operations:
+      - method: GET
+        name: get-scim-users
+        description: Drift List user objects
+        call: drift.get-scim-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scim/Users
+      name: post-scim-users
+      operations:
+      - method: POST
+        name: post-scim-users
+        description: Drift Provision a user
+        call: drift.post-scim-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scim/Users
+      name: put-scim-users
+      operations:
+      - method: PUT
+        name: put-scim-users
+        description: Drift Update a user
+        call: drift.put-scim-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scim/Users
+      name: delete-scim-users
+      operations:
+      - method: DELETE
+        name: delete-scim-users
+        description: Drift Deprovision a user
+        call: drift.delete-scim-users
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /scim/Users/{id}
+      name: get-scim-users-id
+      operations:
+      - method: GET
+        name: get-scim-users-id
+        description: Drift Fetch a user object
+        call: drift.get-scim-users-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: drift-mcp
+    transport: http
+    description: MCP adapter for Drift for AI agent use.
+    tools:
+    - name: post-contacts
+      description: Drift Create a contact
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-contacts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contacts
+      description: Drift List contacts by externalId
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-contacts
+      with:
+        idType: tools.idType
+        id: tools.id
+      inputParameters:
+      - name: idType
+        type: string
+        description: idType
+      - name: id
+        type: string
+        description: Your unique externalId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-contacts-id
+      description: Update a contact - Drift Id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.patch-contacts-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Drift contactId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contacts-id
+      description: Fetch a contact by Drift Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-contacts-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Drift contactId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-contacts-id
+      description: Drift Delete a contact
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-contacts-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-contacts-normalize
+      description: Drift Update a contact - ExternalId
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.patch-contacts-normalize
+      with:
+        idType: tools.idType
+        id: tools.id
+      inputParameters:
+      - name: idType
+        type: string
+        description: One of drift, external, internal
+      - name: id
+        type: string
+        description: Your unique externalId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contacts
+      description: Drift List contacts by email
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-contacts
+      with:
+        email: tools.email
+      inputParameters:
+      - name: email
+        type: string
+        description: The email address of the requested contact
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-emails-unsubscribe
+      description: Drift Unsubscribe contacts from emails
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-emails-unsubscribe
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-contacts-timeline
+      description: Drift Post a timeline event to a contact - externalId
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-contacts-timeline
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contacts-attributes
+      description: Drift List custom contact attributes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-contacts-attributes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-users-id
+      description: Drift Fetch a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-users-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-users-list
+      description: Drift List all users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-users-list
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-users-update
+      description: Drift Update a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.patch-users-update
+      with:
+        userId: tools.userId
+      inputParameters:
+      - name: userId
+        type: string
+        description: userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-users-meetings-org
+      description: Drift Fetch booked meetings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-users-meetings-org
+      with:
+        min_start_time: tools.min_start_time
+        max_start_time: tools.max_start_time
+      inputParameters:
+      - name: min_start_time
+        type: string
+        description: min_start_time
+      - name: max_start_time
+        type: string
+        description: max_start_time
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-conversations-id-messages
+      description: Drift Create a message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-conversations-id-messages
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: The Drift conversationId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-conversations-id-messages
+      description: Drift Fetch a conversation's messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-conversations-id-messages
+      with:
+        id: tools.id
+        next: tools.next
+      inputParameters:
+      - name: id
+        type: string
+        description: The Drift conversationId
+        required: true
+      - name: next
+        type: string
+        description: Page number where page sizes are always 50
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-conversations-id
+      description: Drift Fetch a conversation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-conversations-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: The Drift conversationId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-conversations-id-transcript
+      description: Drift Fetch a conversation's transcript as a string
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-conversations-id-transcript
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: The Drift conversationId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-conversations-id-json-transcript
+      description: Drift Fetch a conversation's transcript as a JSON object
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-conversations-id-json-transcript
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: The Drift conversationId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-attachments-id-data
+      description: Drift Fetch a conversation's attachments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-attachments-id-data
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: The Drift documentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-conversations-new
+      description: Drift Create a conversation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-conversations-new
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-conversations-stats
+      description: Drift List conversation statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-conversations-stats
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-conversations-list
+      description: Drift List conversations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-conversations-list
+      with:
+        limit: tools.limit
+        statusId: tools.statusId
+        page_token: tools.page_token
+      inputParameters:
+      - name: limit
+        type: string
+        description: Max number of conversations to retrieve (max 100, default 25).
+      - name: statusId
+        type: string
+        description: 'Return only conversations that match the provided status code. Uses the following values: OPEN, CLOSED,
+          PENDING'
+      - name: page_token
+        type: string
+        description: Allows you to move to the next page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-accounts-create
+      description: Drift Create an account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-accounts-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-accounts-id
+      description: Drift Fetch an account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-accounts-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Drift accountId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-accounts-id
+      description: Drift Delete an account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: drift.delete-accounts-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Drift accountId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-accounts
+      description: Drift List accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-accounts
+      with:
+        index: tools.index
+        size: tools.size
+      inputParameters:
+      - name: index
+        type: string
+        description: Used as a starting index of the the accounts query in the authenticated Drift user's account
+      - name: size
+        type: string
+        description: Number of accounts per batch (default=10, max=65)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-accounts-update
+      description: Drift Update an account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.patch-accounts-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playbooks-list
+      description: Drift List playbooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-playbooks-list
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playbooks-clp
+      description: Drift List conversational landing pages (CLP)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-playbooks-clp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-teams-org
+      description: Drift List teams
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-teams-org
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-teams-users-id
+      description: Drift List teams by user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-teams-users-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Drift userId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-app-uninstall
+      description: Drift Trigger app uninstall
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-app-uninstall
+      with:
+        clientId: tools.clientId
+        clientSecret: tools.clientSecret
+      inputParameters:
+      - name: clientId
+        type: string
+        description: clientId
+      - name: clientSecret
+        type: string
+        description: clientSecret
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-app-token-info
+      description: Drift Get token information
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-app-token-info
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-gdpr-retrieve
+      description: Drift Fetch GDPR data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-gdpr-retrieve
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-gdpr-delete
+      description: Drift Delete GDPR data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-gdpr-delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-scim-users
+      description: Drift List user objects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-scim-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-scim-users
+      description: Drift Provision a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift.post-scim-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-scim-users
+      description: Drift Update a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: drift.put-scim-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-scim-users
+      description: Drift Deprovision a user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: drift.delete-scim-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-scim-users-id
+      description: Drift Fetch a user object
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift.get-scim-users-id
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Drift userId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    DRIFT_TOKEN: DRIFT_TOKEN
