@@ -3,27 +3,33 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Drift
 providerId: drift
-created: '2026-05-04'
-modified: '2026-05-04'
-reconciled: true
+created: '2026-05-08'
+modified: '2026-05-08'
+reconciled: false
 tags:
-  - Rate Limiting
-  - Conversational AI
-description: Drift API rate limits per app.
+- Customer Support
+- Sales
+- Conversational
+- Chatbot
+- AI
+- Rate Limiting
+- Quotas
+- Throttling
+description: Placeholder rate-limit artifact for Drift. Replace with real limits once researched.
+notes: Initial scaffold — limits have not yet been reconciled.
 sources:
-  - https://www.drift.com/pricing/
-  - https://devdocs.drift.com/docs/rate-limits
-headers:
-  retryAfter: Retry-After
+- https://www.drift.com/
 responseCodes:
   throttled: 429
 limits:
-  - name: REST API (default)
-    scope: app
-    metric: requests_per_minute
-    limit: 600
-    timeFrame: minute
-  - name: Webhook processing
-    scope: endpoint
-    metric: concurrent
-    limit: high
+- name: Default
+  scope: account
+  metric: varies
+  limit: see provider documentation
+  notes: Pending reconciliation.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
