@@ -1,6 +1,6 @@
 # Drift (drift)
 
-Drift (now part of Salesloft) is a conversational AI platform offering chat, conversational marketing, and AI sales agents that engage prospects in real time.
+Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat, video, and account-based engagement on websites.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis.yml)
 
@@ -10,14 +10,23 @@ Drift (now part of Salesloft) is a conversational AI platform offering chat, con
 - **x-type:** company
 
 ## Tags:
- - Customer Support, Sales, Conversational, Chatbot, AI
+ - Conversational Marketing, Chatbots, Sales, Messaging, Customer Engagement
 
 ## Timestamps
 - **Created:** 2026-05-08
 - **Modified:** 2026-05-08
 
+## APIs
+
+### Drift REST API
+Drift REST API covers contacts, users, conversations and messages, accounts, playbooks, teams, app admin tokens, data privacy, and SCIM provisioning. Webhook events deliver realtime conversation, contact, and message updates.
+
+- **Human URL:** https://devdocs.drift.com/
+- **Base URL:** https://driftapi.com
+
 ## Common Properties
 - [Website](https://www.drift.com/)
+- [Documentation](https://devdocs.drift.com/)
 - [Plans](plans/drift-plans-pricing.yml) — placeholder, pipeline reconciles later
 - [RateLimits](rate-limits/drift-rate-limits.yml) — placeholder
 - [FinOps](finops/drift-finops.yml) — FOCUS-aligned placeholder

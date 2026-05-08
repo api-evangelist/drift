@@ -3,21 +3,41 @@ url: https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis
 name: Drift
 x-type: company
 description: >-
-  Drift (now part of Salesloft) is a conversational AI platform offering chat, conversational marketing, and AI sales agents that engage prospects in real time.
+  Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat, video, and account-based engagement on websites.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Customer Support
+  - Conversational Marketing
+  - Chatbots
   - Sales
-  - Conversational
-  - Chatbot
-  - AI
+  - Messaging
+  - Customer Engagement
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: drift:drift-api
+    name: Drift REST API
+    description: >-
+      Drift REST API covers contacts, users, conversations and messages, accounts, playbooks, teams, app admin tokens, data privacy, and SCIM provisioning. Webhook events deliver realtime conversation, contact, and message updates.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://devdocs.drift.com/
+    baseURL: https://driftapi.com
+    tags:
+      - Messaging
+      - Chatbots
+      - REST
+    properties:
+      - type: Documentation
+        url: https://devdocs.drift.com/
+      - type: Reference
+        url: https://devdocs.drift.com/reference
+      - type: OpenAPI
+        url: openapi/drift-openapi.yml
 common:
   - type: Website
     url: https://www.drift.com/
+  - type: Documentation
+    url: https://devdocs.drift.com/
   - type: Plans
     url: plans/drift-plans-pricing.yml
   - type: RateLimits
