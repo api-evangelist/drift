@@ -1,7 +1,7 @@
 aid: drift
 url: https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis.yml
 name: Drift
-x-type: company
+kind: company
 description: >-
   Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat, video, and account-based engagement on websites.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
