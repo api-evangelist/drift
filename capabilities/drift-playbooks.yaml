@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Drift — Playbooks
+  description: 'Drift — Playbooks. 2 operations. Lead operation: Drift List conversational landing pages (CLP). Self-contained
+    Naftiko capability covering one Drift business surface.'
+  tags:
+  - Drift
+  - Playbooks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DRIFT_API_KEY: DRIFT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: drift-playbooks
+    baseUri: http://{{base_url}}
+    description: Drift — Playbooks business capability. Self-contained, no shared references.
+    resources:
+    - name: playbooks-clp
+      path: /playbooks/clp
+      operations:
+      - name: get
+        method: GET
+        description: Drift List conversational landing pages (CLP)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: playbooks-list
+      path: /playbooks/list
+      operations:
+      - name: get
+        method: GET
+        description: Drift List playbooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.DRIFT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: drift-playbooks-rest
+    port: 8080
+    description: REST adapter for Drift — Playbooks. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/playbooks/clp
+      name: playbooks-clp
+      description: REST surface for playbooks-clp.
+      operations:
+      - method: GET
+        name: get
+        description: Drift List conversational landing pages (CLP)
+        call: drift-playbooks.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playbooks/list
+      name: playbooks-list
+      description: REST surface for playbooks-list.
+      operations:
+      - method: GET
+        name: get
+        description: Drift List playbooks
+        call: drift-playbooks.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: drift-playbooks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Drift — Playbooks. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: drift-list-conversational-landing-pages
+      description: Drift List conversational landing pages (CLP)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-playbooks.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-list-playbooks
+      description: Drift List playbooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-playbooks.get
+      outputParameters:
+      - type: object
+        mapping: $.

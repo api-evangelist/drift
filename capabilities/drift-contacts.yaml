@@ -1,0 +1,455 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Drift — Contacts
+  description: 'Drift — Contacts. 10 operations. Lead operation: Drift Create a contact. Self-contained Naftiko capability
+    covering one Drift business surface.'
+  tags:
+  - Drift
+  - Contacts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DRIFT_API_KEY: DRIFT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: drift-contacts
+    baseUri: http://{{base_url}}
+    description: Drift — Contacts business capability. Self-contained, no shared references.
+    resources:
+    - name: contacts
+      path: /contacts
+      operations:
+      - name: post
+        method: POST
+        description: Drift Create a contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: get
+        method: GET
+        description: Drift List contacts by externalId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idType
+          in: query
+          type: string
+        - name: id
+          in: query
+          type: string
+          description: Your unique externalId
+    - name: contacts
+      path: /contacts/
+      operations:
+      - name: get
+        method: GET
+        description: Drift List contacts by email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: email
+          in: query
+          type: string
+          description: The email address of the requested contact
+    - name: contacts-attributes
+      path: /contacts/attributes
+      operations:
+      - name: get
+        method: GET
+        description: Drift List custom contact attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contacts-normalize
+      path: /contacts/normalize
+      operations:
+      - name: patch
+        method: PATCH
+        description: Drift Update a contact - ExternalId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idType
+          in: query
+          type: string
+          description: One of drift, external, internal
+        - name: id
+          in: query
+          type: string
+          description: Your unique externalId
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: contacts-timeline
+      path: /contacts/timeline
+      operations:
+      - name: post
+        method: POST
+        description: Drift Post a timeline event to a contact - externalId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: contacts-id
+      path: /contacts/{id}
+      operations:
+      - name: patch
+        method: PATCH
+        description: Update a contact - Drift Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Drift contactId
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: get
+        method: GET
+        description: Fetch a contact by Drift Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Drift contactId
+          required: true
+      - name: post
+        method: POST
+        description: Drift Delete a contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: emails-unsubscribe
+      path: /emails/unsubscribe
+      operations:
+      - name: post
+        method: POST
+        description: Drift Unsubscribe contacts from emails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.DRIFT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: drift-contacts-rest
+    port: 8080
+    description: REST adapter for Drift — Contacts. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/contacts
+      name: contacts
+      description: REST surface for contacts.
+      operations:
+      - method: POST
+        name: post
+        description: Drift Create a contact
+        call: drift-contacts.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Drift List contacts by externalId
+        call: drift-contacts.get
+        with:
+          idType: rest.idType
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contacts
+      name: contacts
+      description: REST surface for contacts.
+      operations:
+      - method: GET
+        name: get
+        description: Drift List contacts by email
+        call: drift-contacts.get
+        with:
+          email: rest.email
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contacts/attributes
+      name: contacts-attributes
+      description: REST surface for contacts-attributes.
+      operations:
+      - method: GET
+        name: get
+        description: Drift List custom contact attributes
+        call: drift-contacts.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contacts/normalize
+      name: contacts-normalize
+      description: REST surface for contacts-normalize.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Drift Update a contact - ExternalId
+        call: drift-contacts.patch
+        with:
+          idType: rest.idType
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contacts/timeline
+      name: contacts-timeline
+      description: REST surface for contacts-timeline.
+      operations:
+      - method: POST
+        name: post
+        description: Drift Post a timeline event to a contact - externalId
+        call: drift-contacts.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contacts/{id}
+      name: contacts-id
+      description: REST surface for contacts-id.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Update a contact - Drift Id
+        call: drift-contacts.patch
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Fetch a contact by Drift Id
+        call: drift-contacts.get
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Drift Delete a contact
+        call: drift-contacts.post
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/emails/unsubscribe
+      name: emails-unsubscribe
+      description: REST surface for emails-unsubscribe.
+      operations:
+      - method: POST
+        name: post
+        description: Drift Unsubscribe contacts from emails
+        call: drift-contacts.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: drift-contacts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Drift — Contacts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: drift-create-contact
+      description: Drift Create a contact
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift-contacts.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-list-contacts-externalid
+      description: Drift List contacts by externalId
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-contacts.get
+      with:
+        idType: tools.idType
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-list-contacts-email
+      description: Drift List contacts by email
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-contacts.get
+      with:
+        email: tools.email
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-list-custom-contact-attributes
+      description: Drift List custom contact attributes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-contacts.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-update-contact-externalid
+      description: Drift Update a contact - ExternalId
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: drift-contacts.patch
+      with:
+        idType: tools.idType
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-post-timeline-event-contact
+      description: Drift Post a timeline event to a contact - externalId
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift-contacts.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-contact-drift-id
+      description: Update a contact - Drift Id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: drift-contacts.patch
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-contact-drift-id
+      description: Fetch a contact by Drift Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-contacts.get
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-delete-contact
+      description: Drift Delete a contact
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift-contacts.post
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-unsubscribe-contacts-emails
+      description: Drift Unsubscribe contacts from emails
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift-contacts.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

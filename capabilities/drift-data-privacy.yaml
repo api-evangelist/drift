@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Drift — Data Privacy
+  description: 'Drift — Data Privacy. 2 operations. Lead operation: Drift Delete GDPR data. Self-contained Naftiko capability
+    covering one Drift business surface.'
+  tags:
+  - Drift
+  - Data Privacy
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DRIFT_API_KEY: DRIFT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: drift-data-privacy
+    baseUri: http://{{base_url}}
+    description: Drift — Data Privacy business capability. Self-contained, no shared references.
+    resources:
+    - name: gdpr-delete
+      path: /gdpr/delete
+      operations:
+      - name: post
+        method: POST
+        description: Drift Delete GDPR data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: gdpr-retrieve
+      path: /gdpr/retrieve
+      operations:
+      - name: post
+        method: POST
+        description: Drift Fetch GDPR data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.DRIFT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: drift-data-privacy-rest
+    port: 8080
+    description: REST adapter for Drift — Data Privacy. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/gdpr/delete
+      name: gdpr-delete
+      description: REST surface for gdpr-delete.
+      operations:
+      - method: POST
+        name: post
+        description: Drift Delete GDPR data
+        call: drift-data-privacy.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/gdpr/retrieve
+      name: gdpr-retrieve
+      description: REST surface for gdpr-retrieve.
+      operations:
+      - method: POST
+        name: post
+        description: Drift Fetch GDPR data
+        call: drift-data-privacy.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: drift-data-privacy-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Drift — Data Privacy. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: drift-delete-gdpr-data
+      description: Drift Delete GDPR data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: drift-data-privacy.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-fetch-gdpr-data
+      description: Drift Fetch GDPR data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: drift-data-privacy.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

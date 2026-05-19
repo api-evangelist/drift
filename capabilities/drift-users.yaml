@@ -1,0 +1,202 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Drift — Users
+  description: 'Drift — Users. 4 operations. Lead operation: Drift List all users. Self-contained Naftiko capability covering
+    one Drift business surface.'
+  tags:
+  - Drift
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DRIFT_API_KEY: DRIFT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: drift-users
+    baseUri: http://{{base_url}}
+    description: Drift — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: users-list
+      path: /users/list
+      operations:
+      - name: get
+        method: GET
+        description: Drift List all users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-meetings-org
+      path: /users/meetings/org
+      operations:
+      - name: get
+        method: GET
+        description: Drift Fetch booked meetings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: min_start_time
+          in: query
+          type: string
+        - name: max_start_time
+          in: query
+          type: string
+    - name: users-update
+      path: /users/update
+      operations:
+      - name: patch
+        method: PATCH
+        description: Drift Update a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: users-id
+      path: /users/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Drift Fetch a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DRIFT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: drift-users-rest
+    port: 8080
+    description: REST adapter for Drift — Users. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/list
+      name: users-list
+      description: REST surface for users-list.
+      operations:
+      - method: GET
+        name: get
+        description: Drift List all users
+        call: drift-users.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/meetings/org
+      name: users-meetings-org
+      description: REST surface for users-meetings-org.
+      operations:
+      - method: GET
+        name: get
+        description: Drift Fetch booked meetings
+        call: drift-users.get
+        with:
+          min_start_time: rest.min_start_time
+          max_start_time: rest.max_start_time
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/update
+      name: users-update
+      description: REST surface for users-update.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Drift Update a user
+        call: drift-users.patch
+        with:
+          userId: rest.userId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{id}
+      name: users-id
+      description: REST surface for users-id.
+      operations:
+      - method: GET
+        name: get
+        description: Drift Fetch a user
+        call: drift-users.get
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: drift-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Drift — Users. One tool per consumed operation, routed inline through this capability's consumes
+      block.
+    tools:
+    - name: drift-list-all-users
+      description: Drift List all users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-users.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-fetch-booked-meetings
+      description: Drift Fetch booked meetings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-users.get
+      with:
+        min_start_time: tools.min_start_time
+        max_start_time: tools.max_start_time
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-update-user
+      description: Drift Update a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: drift-users.patch
+      with:
+        userId: tools.userId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drift-fetch-user
+      description: Drift Fetch a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: drift-users.get
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
