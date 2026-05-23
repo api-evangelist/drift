@@ -1,0 +1,21 @@
+name: Drift Domain Vocabulary
+provider: Drift
+providerId: drift
+description: Tag-derived vocabulary for the Drift API surface; sourced from openapi/ tags.
+terms:
+- term: Accounts
+- term: App Admin
+  description: '[https://devdocs.drift.com/docs/app-uninstall](https://devdocs.drift.com/docs/app-uninstall)'
+- term: Contacts
+  description: '[https://devdocs.drift.com/docs/contact-model](https://devdocs.drift.com/docs/contact-model)'
+- term: Conversations and Messages
+  description: '[https://devdocs.drift.com/docs/conversation-model](https://devdocs.drift.com/docs/conversation-model)'
+- term: Data Privacy
+  description: '[https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion](https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion)'
+- term: Playbooks
+  description: '[https://devdocs.drift.com/docs/playbook-model-1](https://devdocs.drift.com/docs/playbook-model-1)'
+- term: SCIM API
+- term: Teams
+  description: '[https://devdocs.drift.com/docs/team-model](https://devdocs.drift.com/docs/team-model)'
+- term: Users
+  description: '[https://devdocs.drift.com/docs/user-model](https://devdocs.drift.com/docs/user-model)'

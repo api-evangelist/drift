@@ -1,0 +1,380 @@
+{
+  "provider": "Drift",
+  "providerId": "drift",
+  "kind": "json-structure",
+  "description": "Structural overview of the Drift API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 41,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/contacts",
+      "operationId": null,
+      "summary": "Drift List contacts by externalId",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/contacts",
+      "operationId": null,
+      "summary": "Drift Create a contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts/{id}",
+      "operationId": null,
+      "summary": "Fetch a contact by Drift Id",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/contacts/{id}",
+      "operationId": null,
+      "summary": "Drift Delete a contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/contacts/{id}",
+      "operationId": null,
+      "summary": "Update a contact - Drift Id",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/contacts/normalize",
+      "operationId": null,
+      "summary": "Drift Update a contact - ExternalId",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts/",
+      "operationId": null,
+      "summary": "Drift List contacts by email",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/emails/unsubscribe",
+      "operationId": null,
+      "summary": "Drift Unsubscribe contacts from emails",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/contacts/timeline",
+      "operationId": null,
+      "summary": "Drift Post a timeline event to a contact - externalId",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts/attributes",
+      "operationId": null,
+      "summary": "Drift List custom contact attributes",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}",
+      "operationId": null,
+      "summary": "Drift Fetch a user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/list",
+      "operationId": null,
+      "summary": "Drift List all users",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/update",
+      "operationId": null,
+      "summary": "Drift Update a user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/meetings/org",
+      "operationId": null,
+      "summary": "Drift Fetch booked meetings",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/{id}/messages",
+      "operationId": null,
+      "summary": "Drift Fetch a conversation's messages",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/conversations/{id}/messages",
+      "operationId": null,
+      "summary": "Drift Create a message",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/{id}",
+      "operationId": null,
+      "summary": "Drift Fetch a conversation",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/{id}/transcript",
+      "operationId": null,
+      "summary": "Drift Fetch a conversation's transcript as a string",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/{id}/json_transcript",
+      "operationId": null,
+      "summary": "Drift Fetch a conversation's transcript as a JSON object",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/attachments/{id}/data",
+      "operationId": null,
+      "summary": "Drift Fetch a conversation's attachments",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/conversations/new",
+      "operationId": null,
+      "summary": "Drift Create a conversation",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/stats",
+      "operationId": null,
+      "summary": "Drift List conversation statuses",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/list",
+      "operationId": null,
+      "summary": "Drift List conversations",
+      "tags": [
+        "Conversations and Messages"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts/create",
+      "operationId": null,
+      "summary": "Drift Create an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{id}",
+      "operationId": null,
+      "summary": "Drift Fetch an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/accounts/{id}",
+      "operationId": null,
+      "summary": "Drift Delete an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts",
+      "operationId": null,
+      "summary": "Drift List accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/accounts/update",
+      "operationId": null,
+      "summary": "Drift Update an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/playbooks/list",
+      "operationId": null,
+      "summary": "Drift List playbooks",
+      "tags": [
+        "Playbooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/playbooks/clp",
+      "operationId": null,
+      "summary": "Drift List conversational landing pages (CLP)",
+      "tags": [
+        "Playbooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/teams/org",
+      "operationId": null,
+      "summary": "Drift List teams",
+      "tags": [
+        "Teams"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/teams/users/{id}",
+      "operationId": null,
+      "summary": "Drift List teams by user",
+      "tags": [
+        "Teams"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/app/uninstall",
+      "operationId": null,
+      "summary": "Drift Trigger app uninstall",
+      "tags": [
+        "App Admin"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/app/token_info",
+      "operationId": null,
+      "summary": "Drift Get token information",
+      "tags": [
+        "App Admin"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/gdpr/retrieve",
+      "operationId": null,
+      "summary": "Drift Fetch GDPR data",
+      "tags": [
+        "Data Privacy"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/gdpr/delete",
+      "operationId": null,
+      "summary": "Drift Delete GDPR data",
+      "tags": [
+        "Data Privacy"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/scim/Users",
+      "operationId": null,
+      "summary": "Drift List user objects",
+      "tags": [
+        "SCIM API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/scim/Users",
+      "operationId": null,
+      "summary": "Drift Provision a user",
+      "tags": [
+        "SCIM API"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/scim/Users",
+      "operationId": null,
+      "summary": "Drift Update a user",
+      "tags": [
+        "SCIM API"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/scim/Users",
+      "operationId": null,
+      "summary": "Drift Deprovision a user",
+      "tags": [
+        "SCIM API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/scim/Users/{id}",
+      "operationId": null,
+      "summary": "Drift Fetch a user object",
+      "tags": [
+        "SCIM API"
+      ]
+    }
+  ]
+}
