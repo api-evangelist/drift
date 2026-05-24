@@ -64,6 +64,8 @@ common:
   url: rate-limits/drift-rate-limits.yml
 - type: FinOps
   url: finops/drift-finops.yml
+- type: LLMsTxt
+  url: https://devdocs.drift.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
