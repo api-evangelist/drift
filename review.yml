@@ -1,0 +1,58 @@
+aid: drift
+reviewed: '2026-05-29'
+reviewer: api-evangelist
+status: mismatch
+summary: >-
+  The task requested generation of an AsyncAPI 2.6 specification for Drift
+  Protocol (the Solana decentralized perpetual futures exchange) covering its
+  public WebSocket APIs (DLOB Server at wss://dlob.drift.trade/ws and the
+  swift orders Events WebSocket). The repository at this aid ("drift") does
+  NOT correspond to Drift Protocol. It documents Drift, the conversational
+  marketing and sales platform now part of Salesloft (drift.com,
+  devdocs.drift.com, base URL https://driftapi.com). These are two unrelated
+  companies sharing the "Drift" name.
+findings:
+- field: name
+  current: Drift
+  observed: Drift (Salesloft) conversational marketing / chatbot platform
+  expected_for_task: Drift Protocol (Solana perpetual futures DEX)
+- field: description
+  current: >-
+    Drift (now part of Salesloft) is a conversational marketing and sales
+    platform delivering chatbots, live chat, video, and account-based
+    engagement on websites.
+  expected_for_task: >-
+    Drift Protocol is a decentralized exchange on Solana offering perpetual
+    futures, spot markets, borrow/lend, and swift order infrastructure.
+- field: humanURL
+  current: https://devdocs.drift.com/
+  expected_for_task: https://docs.drift.trade
+- field: baseURL
+  current: https://driftapi.com
+  expected_for_task: https://dlob.drift.trade (DLOB Server WebSocket host)
+- field: tags
+  current:
+  - Conversational Marketing
+  - Chatbots
+  - Sales
+  - Messaging
+  - Customer Engagement
+  expected_for_task:
+  - Solana
+  - DeFi
+  - Perpetual Futures
+  - Decentralized Exchange
+  - WebSocket
+  - Orderbook
+recommendation: >-
+  Do NOT add an AsyncAPI property here. Drift Protocol is a separate provider
+  and should be onboarded under its own aid (suggested: "drift-protocol")
+  with its own apis.yml pointing at docs.drift.trade, the DLOB Server,
+  swift orders Events WebSocket, and the on-chain program. Generating a
+  Drift Protocol AsyncAPI spec into this repository would conflate two
+  unrelated companies and corrupt the catalog.
+no_changes_made:
+- /Users/kinlane/GitHub/all/drift/apis.yml (left untouched per hard rule)
+- /Users/kinlane/GitHub/all/drift/asyncapi/ (not created)
+task_outcome: aborted
+task_reason: provider-mismatch
