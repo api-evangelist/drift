@@ -2,70 +2,54 @@ aid: drift
 url: https://raw.githubusercontent.com/api-evangelist/drift/refs/heads/main/apis.yml
 name: Drift
 kind: company
-description: Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat,
-  video, and account-based engagement on websites.
+description: >-
+  Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat, video,
+  and account-based engagement on websites.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Conversational Marketing
-- Chatbots
-- Sales
-- Messaging
-- Customer Engagement
+  - Conversational Marketing
+  - Chatbots
+  - Sales
+  - Messaging
+  - Customer Engagement
 created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: drift:drift-api
-  name: Drift REST API
-  description: Drift REST API covers contacts, users, conversations and messages, accounts, playbooks, teams, app admin tokens,
-    data privacy, and SCIM provisioning. Webhook events deliver realtime conversation, contact, and message updates.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  humanURL: https://devdocs.drift.com/
-  baseURL: https://driftapi.com
-  tags:
-  - Messaging
-  - Chatbots
-  - REST
-  properties:
+  - aid: drift:drift-api
+    name: Drift REST API
+    description: >-
+      Drift REST API covers contacts, users, conversations and messages, accounts, playbooks, teams, app admin tokens,
+      data privacy, and SCIM provisioning. Webhook events deliver realtime conversation, contact, and message updates.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://devdocs.drift.com/
+    baseURL: https://driftapi.com
+    tags:
+      - Messaging
+      - Chatbots
+      - REST
+    properties:
+      - type: Documentation
+        url: https://devdocs.drift.com/
+      - type: Reference
+        url: https://devdocs.drift.com/reference
+      - type: OpenAPI
+        url: openapi/drift-openapi.yml
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/drift
+  - type: Website
+    url: https://www.drift.com/
   - type: Documentation
     url: https://devdocs.drift.com/
-  - type: Reference
-    url: https://devdocs.drift.com/reference
-  - type: OpenAPI
-    url: openapi/drift-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/drift-accounts.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-app-admin.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-contacts.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-conversations-and-messages.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-data-privacy.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-playbooks.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-scim-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-teams.yaml
-  - type: NaftikoCapability
-    url: capabilities/drift-users.yaml
-common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/drift
-- type: Website
-  url: https://www.drift.com/
-- type: Documentation
-  url: https://devdocs.drift.com/
-- type: Plans
-  url: plans/drift-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/drift-rate-limits.yml
-- type: FinOps
-  url: finops/drift-finops.yml
-- type: LLMsTxt
-  url: https://devdocs.drift.com/llms.txt
+  - type: Plans
+    url: plans/drift-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/drift-rate-limits.yml
+  - type: FinOps
+    url: finops/drift-finops.yml
+  - type: LLMsTxt
+    url: https://devdocs.drift.com/llms.txt
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
