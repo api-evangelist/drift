@@ -1,0 +1,815 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Drift",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift List contacts by externalId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/contacts",
+            "params": [
+              {
+                "name": "idType",
+                "value": "external",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Your unique externalId"
+              }
+            ]
+          },
+          "docs": "Drift List contacts by externalId"
+        },
+        {
+          "info": {
+            "name": "Drift Create a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Create a contact"
+        },
+        {
+          "info": {
+            "name": "Fetch a contact by Drift Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Drift contactId"
+              }
+            ]
+          },
+          "docs": "Fetch a contact by Drift Id"
+        },
+        {
+          "info": {
+            "name": "Drift Delete a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Drift Delete a contact"
+        },
+        {
+          "info": {
+            "name": "Update a contact - Drift Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{{base_url}}/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Drift contactId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a contact - Drift Id"
+        },
+        {
+          "info": {
+            "name": "Drift Update a contact - ExternalId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{{base_url}}/contacts/normalize",
+            "params": [
+              {
+                "name": "idType",
+                "value": "",
+                "type": "query",
+                "description": "One of drift, external, internal"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Your unique externalId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Update a contact - ExternalId"
+        },
+        {
+          "info": {
+            "name": "Drift List contacts by email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/contacts/",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "The email address of the requested contact"
+              }
+            ]
+          },
+          "docs": "Drift List contacts by email"
+        },
+        {
+          "info": {
+            "name": "Drift Unsubscribe contacts from emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/emails/unsubscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Unsubscribe contacts from emails"
+        },
+        {
+          "info": {
+            "name": "Drift Post a timeline event to a contact - externalId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/contacts/timeline",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Post a timeline event to a contact - externalId"
+        },
+        {
+          "info": {
+            "name": "Drift List custom contact attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/contacts/attributes"
+          },
+          "docs": "Drift List custom contact attributes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift Fetch a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a user"
+        },
+        {
+          "info": {
+            "name": "Drift List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/users/list"
+          },
+          "docs": "Drift List all users"
+        },
+        {
+          "info": {
+            "name": "Drift Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{{base_url}}/users/update",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Update a user"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch booked meetings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/users/meetings/org",
+            "params": [
+              {
+                "name": "min_start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_start_time",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Drift Fetch booked meetings"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Conversations and Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift Fetch a conversation's messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/conversations/:id/messages",
+            "params": [
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Page number where page sizes are always 50"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Drift conversationId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a conversation's messages"
+        },
+        {
+          "info": {
+            "name": "Drift Create a message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/conversations/:id/messages",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Drift conversationId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Create a message"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/conversations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Drift conversationId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a conversation"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch a conversation's transcript as a string",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/conversations/:id/transcript",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Drift conversationId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a conversation's transcript as a string"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch a conversation's transcript as a JSON object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/conversations/:id/json_transcript",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Drift conversationId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a conversation's transcript as a JSON object"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch a conversation's attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/attachments/:id/data",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Drift documentId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a conversation's attachments"
+        },
+        {
+          "info": {
+            "name": "Drift Create a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/conversations/new",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Create a conversation"
+        },
+        {
+          "info": {
+            "name": "Drift List conversation statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/conversations/stats"
+          },
+          "docs": "Drift List conversation statuses"
+        },
+        {
+          "info": {
+            "name": "Drift List conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/conversations/list",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of conversations to retrieve (max 100, default 25)."
+              },
+              {
+                "name": "statusId",
+                "value": "",
+                "type": "query",
+                "description": "Return only conversations that match the provided status code. Uses the following values: OPEN, CLOSED, PENDING"
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "Allows you to move to the next page"
+              }
+            ]
+          },
+          "docs": "Drift List conversations"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift Create an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/accounts/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Create an account"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/accounts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Drift accountId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch an account"
+        },
+        {
+          "info": {
+            "name": "Drift Delete an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{base_url}}/accounts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Drift accountId"
+              }
+            ]
+          },
+          "docs": "Drift Delete an account"
+        },
+        {
+          "info": {
+            "name": "Drift List accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/accounts",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "Used as a starting index of the the accounts query in the authenticated Drift user's account"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of accounts per batch (default=10, max=65)"
+              }
+            ]
+          },
+          "docs": "Drift List accounts"
+        },
+        {
+          "info": {
+            "name": "Drift Update an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{{base_url}}/accounts/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Update an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Playbooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift List playbooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/playbooks/list"
+          },
+          "docs": "Drift List playbooks"
+        },
+        {
+          "info": {
+            "name": "Drift List conversational landing pages (CLP)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/playbooks/clp"
+          },
+          "docs": "Drift List conversational landing pages (CLP)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift List teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/teams/org"
+          },
+          "docs": "Drift List teams"
+        },
+        {
+          "info": {
+            "name": "Drift List teams by user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/teams/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Drift userId"
+              }
+            ]
+          },
+          "docs": "Drift List teams by user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "App Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift Trigger app uninstall",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/app/uninstall",
+            "params": [
+              {
+                "name": "clientId",
+                "value": ":clientId",
+                "type": "query"
+              },
+              {
+                "name": "clientSecret",
+                "value": ":clientSecret",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Drift Trigger app uninstall"
+        },
+        {
+          "info": {
+            "name": "Drift Get token information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/app/token_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Get token information"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Privacy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift Fetch GDPR data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/gdpr/retrieve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Fetch GDPR data"
+        },
+        {
+          "info": {
+            "name": "Drift Delete GDPR data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/gdpr/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Delete GDPR data"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SCIM API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drift List user objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/scim/Users"
+          },
+          "docs": "Drift List user objects"
+        },
+        {
+          "info": {
+            "name": "Drift Provision a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{base_url}}/scim/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Provision a user"
+        },
+        {
+          "info": {
+            "name": "Drift Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{base_url}}/scim/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Drift Update a user"
+        },
+        {
+          "info": {
+            "name": "Drift Deprovision a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{base_url}}/scim/Users"
+          },
+          "docs": "Drift Deprovision a user"
+        },
+        {
+          "info": {
+            "name": "Drift Fetch a user object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{base_url}}/scim/Users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Drift userId"
+              }
+            ]
+          },
+          "docs": "Drift Fetch a user object"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
