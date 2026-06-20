@@ -5,7 +5,7 @@ kind: company
 description: >-
   Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat, video,
   and account-based engagement on websites.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Conversational Marketing
   - Chatbots
@@ -21,7 +21,7 @@ apis:
     description: >-
       Drift REST API covers contacts, users, conversations and messages, accounts, playbooks, teams, app admin tokens,
       data privacy, and SCIM provisioning. Webhook events deliver realtime conversation, contact, and message updates.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://devdocs.drift.com/
     baseURL: https://driftapi.com
     tags:
