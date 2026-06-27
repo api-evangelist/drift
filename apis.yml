@@ -48,7 +48,7 @@ common:
     url: rate-limits/drift-rate-limits.yml
   - type: FinOps
     url: finops/drift-finops.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://devdocs.drift.com/llms.txt
 maintainers:
   - FN: Kin Lane
