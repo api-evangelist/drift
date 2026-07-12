@@ -36,6 +36,10 @@ apis:
       - type: OpenAPI
         url: openapi/drift-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/drift-domain-security.yml
+  - type: Authentication
+    url: authentication/drift-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/drift
   - type: Website

@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.drift.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 26 20:17:29 2026 GMT
+  hsts: false
+- host: devdocs.drift.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  3 22:42:51 2026 GMT
+  hsts: null
+- host: driftapi.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Nov 20 23:59:59 2026 GMT
+  hsts: null
+domains:
+- domain: drift.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: driftapi.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
