@@ -36,6 +36,8 @@ apis:
       - type: OpenAPI
         url: openapi/drift-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/drift-agentic-access.yml
   - type: DomainSecurity
     url: security/drift-domain-security.yml
   - type: Authentication
