@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts Users API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: Users
+  description: '[https://devdocs.drift.com/docs/user-model](https://devdocs.drift.com/docs/user-model)'
+paths:
+  /users/{id}:
+    get:
+      tags:
+      - Users
+      summary: Drift Fetch a user
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/list:
+    get:
+      tags:
+      - Users
+      summary: Drift List all users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/update:
+    patch:
+      tags:
+      - Users
+      summary: Drift Update a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {}
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/meetings/org:
+    get:
+      tags:
+      - Users
+      summary: Drift Fetch booked meetings
+      parameters:
+      - name: min_start_time
+        in: query
+        schema:
+          type: string
+      - name: max_start_time
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

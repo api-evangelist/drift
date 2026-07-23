@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts Playbooks API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: Playbooks
+  description: '[https://devdocs.drift.com/docs/playbook-model-1](https://devdocs.drift.com/docs/playbook-model-1)'
+paths:
+  /playbooks/list:
+    get:
+      tags:
+      - Playbooks
+      summary: Drift List playbooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /playbooks/clp:
+    get:
+      tags:
+      - Playbooks
+      summary: Drift List conversational landing pages (CLP)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

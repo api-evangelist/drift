@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts SCIM API API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: SCIM API
+paths:
+  /scim/Users:
+    get:
+      tags:
+      - SCIM API
+      summary: Drift List user objects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+      - SCIM API
+      summary: Drift Provision a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schemas:
+                - urn:scim:schemas:core:2.0
+                userName: stgring
+                displayName: string
+                roles:
+                - value: string
+                  display: string
+                  primary: true
+                name:
+                  givenName: string
+                  familyName: string
+                  formatted: string
+                phoneNumbers:
+                - value: string
+                  display: string
+                  primary: true
+                locale: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+      - SCIM API
+      summary: Drift Update a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                schemas:
+                - urn:scim:schemas:core:2.0
+                userName: stgring
+                displayName: string
+                roles:
+                - value: string
+                  display: string
+                  primary: true
+                name:
+                  givenName: string
+                  familyName: string
+                  formatted: string
+                phoneNumbers:
+                - value: string
+                  display: string
+                  primary: true
+                locale: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+      - SCIM API
+      summary: Drift Deprovision a user
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /scim/Users/{id}:
+    get:
+      tags:
+      - SCIM API
+      summary: Drift Fetch a user object
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Drift userId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

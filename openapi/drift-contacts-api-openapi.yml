@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts Contacts API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: Contacts
+  description: '[https://devdocs.drift.com/docs/contact-model](https://devdocs.drift.com/docs/contact-model)'
+paths:
+  /contacts:
+    post:
+      tags:
+      - Contacts
+      summary: Drift Create a contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                attributes:
+                  email: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+      - Contacts
+      summary: Drift List contacts by externalId
+      parameters:
+      - name: idType
+        in: query
+        schema:
+          type: string
+        example: external
+      - name: id
+        in: query
+        schema:
+          type: string
+        description: Your unique externalId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/{id}:
+    patch:
+      tags:
+      - Contacts
+      summary: Update a contact - Drift Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                attributes:
+                  attribute_name: value
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Drift contactId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+      - Contacts
+      summary: Fetch a contact by Drift Id
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Drift contactId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+      - Contacts
+      summary: Drift Delete a contact
+      requestBody:
+        content: {}
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/normalize:
+    patch:
+      tags:
+      - Contacts
+      summary: Drift Update a contact - ExternalId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                attributes:
+                  attribute_name: value
+      parameters:
+      - name: idType
+        in: query
+        schema:
+          type: string
+        description: One of drift, external, internal
+      - name: id
+        in: query
+        schema:
+          type: string
+        description: Your unique externalId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/:
+    get:
+      tags:
+      - Contacts
+      summary: Drift List contacts by email
+      parameters:
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: The email address of the requested contact
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /emails/unsubscribe:
+    post:
+      tags:
+      - Contacts
+      summary: Drift Unsubscribe contacts from emails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+              - email@mail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/timeline:
+    post:
+      tags:
+      - Contacts
+      summary: Drift Post a timeline event to a contact - externalId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                externalId: 0
+                createdAt: 0
+                event: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contacts/attributes:
+    get:
+      tags:
+      - Contacts
+      summary: Drift List custom contact attributes
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

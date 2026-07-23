@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: Accounts
+paths:
+  /accounts/create:
+    post:
+      tags:
+      - Accounts
+      summary: Drift Create an account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                owner_id: 0
+                name: string
+                domain: string
+                customProperties:
+                - label: string
+                  name: string
+                  value: 0
+                  type: NUMBER
+                targeted: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts/{id}:
+    get:
+      tags:
+      - Accounts
+      summary: Drift Fetch an account
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Drift accountId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+      - Accounts
+      summary: Drift Delete an account
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Drift accountId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Drift List accounts
+      parameters:
+      - name: index
+        in: query
+        schema:
+          type: string
+        description: Used as a starting index of the the accounts query in the authenticated Drift user's account
+      - name: size
+        in: query
+        schema:
+          type: string
+        description: Number of accounts per batch (default=10, max=65)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /accounts/update:
+    patch:
+      tags:
+      - Accounts
+      summary: Drift Update an account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                ownerId: 0
+                name: string
+                accountId: string
+                domain: string
+                customProperties:
+                - label: string
+                  name: string
+                  value: 0
+                  type: NUMBER
+                targeted: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

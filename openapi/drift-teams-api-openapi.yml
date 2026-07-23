@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts Teams API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: Teams
+  description: '[https://devdocs.drift.com/docs/team-model](https://devdocs.drift.com/docs/team-model)'
+paths:
+  /teams/org:
+    get:
+      tags:
+      - Teams
+      summary: Drift List teams
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /teams/users/{id}:
+    get:
+      tags:
+      - Teams
+      summary: Drift List teams by user
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+        description: Drift userId
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts Data Privacy API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: Data Privacy
+  description: '[https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion](https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion)'
+paths:
+  /gdpr/retrieve:
+    post:
+      tags:
+      - Data Privacy
+      summary: Drift Fetch GDPR data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /gdpr/delete:
+    post:
+      tags:
+      - Data Privacy
+      summary: Drift Delete GDPR data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

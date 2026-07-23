@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: Drift Accounts App Admin API
+  description: Drift is a cloud-based solution designed to help businesses automate sales processes by adding live chat windows to websites for increased customer experience and loyalty. Key features include chatbots, geo-targeting, offline access, proactive chating and transfers/routing.
+  version: 1.0.0
+servers:
+- url: http://{{base_url}}
+- url: https://driftapi.com
+security:
+- bearerAuth: []
+tags:
+- name: App Admin
+  description: '[https://devdocs.drift.com/docs/app-uninstall](https://devdocs.drift.com/docs/app-uninstall)'
+paths:
+  /app/uninstall:
+    post:
+      tags:
+      - App Admin
+      summary: Drift Trigger app uninstall
+      requestBody:
+        content: {}
+      parameters:
+      - name: clientId
+        in: query
+        schema:
+          type: string
+        example: :clientId
+      - name: clientSecret
+        in: query
+        schema:
+          type: string
+        example: :clientSecret
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /app/token_info:
+    post:
+      tags:
+      - App Admin
+      summary: Drift Get token information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                access_token: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
