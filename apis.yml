@@ -5,7 +5,20 @@ kind: company
 description: >-
   Drift (now part of Salesloft) is a conversational marketing and sales platform delivering chatbots, live chat, video,
   and account-based engagement on websites.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/drift.png
 tags:
   - Conversational Marketing
   - Chatbots
@@ -16,25 +29,137 @@ created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: drift:drift-api
-    name: Drift REST API
-    description: >-
-      Drift REST API covers contacts, users, conversations and messages, accounts, playbooks, teams, app admin tokens,
-      data privacy, and SCIM provisioning. Webhook events deliver realtime conversation, contact, and message updates.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://devdocs.drift.com/
-    baseURL: https://driftapi.com
-    tags:
-      - Messaging
-      - Chatbots
-      - REST
-    properties:
-      - type: Documentation
-        url: https://devdocs.drift.com/
-      - type: Reference
-        url: https://devdocs.drift.com/reference
-      - type: OpenAPI
-        url: openapi/drift-openapi.yml
+- aid: drift:drift-accounts-api
+  name: Drift Accounts API
+  description: The Accounts API from Drift — 4 operation(s) for accounts.
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-app-admin-api
+  name: Drift App Admin API
+  description: >-
+    [https://devdocs.drift.com/docs/app-uninstall](https://devdocs.drift.com/docs/app-uninstall)
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - App Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-app-admin-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-contacts-api
+  name: Drift Contacts API
+  description: >-
+    [https://devdocs.drift.com/docs/contact-model](https://devdocs.drift.com/docs/contact-model)
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-conversations-and-messages-api
+  name: Drift Conversations and Messages API
+  description: >-
+    [https://devdocs.drift.com/docs/conversation-model](https://devdocs.drift.com/docs/conversation-model)
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Conversations and Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-conversations-and-messages-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-data-privacy-api
+  name: Drift Data Privacy API
+  description: >-
+    [https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion](https://devdocs.drift.com/docs/automating-gdpr-retrieval-and-deletion)
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Data Privacy
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-data-privacy-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-playbooks-api
+  name: Drift Playbooks API
+  description: >-
+    [https://devdocs.drift.com/docs/playbook-model-1](https://devdocs.drift.com/docs/playbook-model-1)
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Playbooks
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-playbooks-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-scim-api-api
+  name: Drift SCIM API API
+  description: The SCIM API API from Drift — 2 operation(s) for scim api.
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - SCIM API
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-scim-api-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-teams-api
+  name: Drift Teams API
+  description: '[https://devdocs.drift.com/docs/team-model](https://devdocs.drift.com/docs/team-model)'
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-teams-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
+- aid: drift:drift-users-api
+  name: Drift Users API
+  description: '[https://devdocs.drift.com/docs/user-model](https://devdocs.drift.com/docs/user-model)'
+  humanURL: https://devdocs.drift.com/
+  baseURL: https://driftapi.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/drift-users-api-openapi.yml
+  - type: Documentation
+    url: https://devdocs.drift.com/
+  - type: Reference
+    url: https://devdocs.drift.com/reference
 common:
   - type: AgenticAccess
     url: agentic-access/drift-agentic-access.yml
