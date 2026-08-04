@@ -1,0 +1,30 @@
+{
+  "provider": "drift",
+  "sources": [
+    "drift-accounts-api-openapi.yml",
+    "drift-app-admin-api-openapi.yml",
+    "drift-contacts-api-openapi.yml",
+    "drift-conversations-and-messages-api-openapi.yml",
+    "drift-data-privacy-api-openapi.yml",
+    "drift-playbooks-api-openapi.yml",
+    "drift-scim-api-api-openapi.yml",
+    "drift-teams-api-openapi.yml",
+    "drift-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "drift-accounts-api-openapi.yml",
+    "drift-app-admin-api-openapi.yml",
+    "drift-contacts-api-openapi.yml",
+    "drift-conversations-and-messages-api-openapi.yml",
+    "drift-data-privacy-api-openapi.yml",
+    "drift-playbooks-api-openapi.yml",
+    "drift-scim-api-api-openapi.yml",
+    "drift-teams-api-openapi.yml",
+    "drift-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
